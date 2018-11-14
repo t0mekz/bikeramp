@@ -4,6 +4,7 @@ module Api
       def create
         @trip = Trip.new(permitted_params)
         if @trip.save
+          @trip.calculate_distance
           render json: @trip, status: :created
         else
           render json: { errors: @trip.errors }, status: :unprocessable_entity
