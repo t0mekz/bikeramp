@@ -9,14 +9,14 @@ class StatsMonthlySerializer < ActiveModel::Serializer
   end
 
   def total_distance
-    "#{ (object.total_distance / DISTANCE_DIVIDER).round(PRECISION) } km"
+    "#{ (object.total_distance.to_f / DISTANCE_DIVIDER).round(PRECISION) } km"
   end
 
   def avg_ride
-    "#{ (object.avg_ride / DISTANCE_DIVIDER).round(PRECISION) } km"
+    "#{ (object.avg_ride.to_f / DISTANCE_DIVIDER).round(PRECISION) } km"
   end
 
   def avg_price
-    "#{ object.avg_price.round(PRECISION) }PLN"
+    "#{ object.avg_price.to_f.round(PRECISION) }PLN"
   end
 end

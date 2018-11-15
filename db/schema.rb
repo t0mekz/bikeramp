@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_192041) do
+ActiveRecord::Schema.define(version: 2018_11_15_203523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2018_11_15_192041) do
      FROM trips
     WHERE (trips.distance IS NOT NULL)
     GROUP BY trips.date;
+  SQL
+
+  create_view "weekly_statistics", materialized: true,  sql_definition: <<-SQL
+      SELECT (date_trunc('week'::text, (trips.date)::timestamp with time zone))::date AS week_start,
+      ((date_trunc('week'::text, (trips.date)::timestamp with time zone) + '6 days'::interval))::date AS week_end,
+      sum(trips.distance) AS total_distance,
+      sum(trips.price) AS total_price
+     FROM trips
+    GROUP BY ((date_trunc('week'::text, (trips.date)::timestamp with time zone))::date), (((date_trunc('week'::text, (trips.date)::timestamp with time zone) + '6 days'::interval))::date);
   SQL
 
 end
