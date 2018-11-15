@@ -1,6 +1,5 @@
 class StatsMonthlySerializer < ActiveModel::Serializer
   PRECISION = 2
-  DISTANCE_DIVIDER = 1000
 
   attributes :day, :total_distance, :avg_ride, :avg_price
 
@@ -9,11 +8,11 @@ class StatsMonthlySerializer < ActiveModel::Serializer
   end
 
   def total_distance
-    "#{ (object.total_distance.to_f / DISTANCE_DIVIDER).round(PRECISION) } km"
+    "#{ (object.total_distance.to_f).round(PRECISION) } km"
   end
 
   def avg_ride
-    "#{ (object.avg_ride.to_f / DISTANCE_DIVIDER).round(PRECISION) } km"
+    "#{ (object.avg_ride.to_f).round(PRECISION) } km"
   end
 
   def avg_price
