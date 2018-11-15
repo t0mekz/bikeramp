@@ -1,0 +1,6 @@
+{
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "ruby.rubocop.executePath": "/Users/tomaszzdanuk/.rvm/gems/ruby-2.5.3/bin/",
+}
