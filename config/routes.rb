@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :trips, only: [:create]
       namespace :stats do
         get 'monthly', action: :index, controller: 'monthly'
+        get 'weekly', action: :index, controller: 'weekly'
       end
     end
   end

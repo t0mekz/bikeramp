@@ -20,5 +20,9 @@ RSpec.describe CalculateDistanceService do
       expect(trip.reload.distance).to eql 5
     end
 
+    it "should invoke refreshing weekly view" do
+      expect(WeeklyStatistic).to receive(:refresh_view)
+      subject
+    end
   end
 end

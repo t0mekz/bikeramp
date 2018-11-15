@@ -50,10 +50,11 @@ addresses = [
 ]
 
 100.times do
-  Trip.create(
+  params = {
     start_address: addresses.sample,
     destination_address: addresses.sample,
     price: rand * 100,
     date: rand(10.years).seconds.ago
-  )
+  }
+  CreateTripService.call(params)
 end

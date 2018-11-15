@@ -13,5 +13,6 @@ class CalculateDistanceService
   def call
     distance = distanceCalculator.calculate_distance(trip.start_address, trip.destination_address)
     trip.update(distance: distance)
+    WeeklyStatistic.refresh_view
   end
 end

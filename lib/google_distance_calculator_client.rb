@@ -24,9 +24,16 @@ class GoogleDistanceCalculatorClient
   def parse_result(response)
     if response.parsed_response["status"].eql? "OK"
       distance = response.parsed_response.dig "rows", 0, "elements", 0, "distance", "value"
-      return distance / 100
+      return distance / 1000
     else
       raise GoogleDistanceCalculatorError.new(response.parsed_response["status"])
+    end
+  end
+
+  class GoogleDistanceCalculatorError < StandardError
+    def initialize(status)
+      message = "#{status} - Something went wrong. We cannot calculate distance for provided addresses."
+      super
     end
   end
 end
