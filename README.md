@@ -1,26 +1,26 @@
 # README
 
-NOTE: This application is using Google Distance Matrix API if you want to run this app you need to provide proper API_KEY first.
+**NOTE: This application is using Google Distance Matrix API if you want to run this app you need to provide proper API_KEY first.**
 
-## Stack
+# Stack
 
-Ruby 2.5.3
-RoR 5.2.1
-PostgreSQL
-Redis
-Sidekiq
+- Ruby 2.5.3
+- RoR 5.2.1
+- PostgreSQL
+- Redis
+- Sidekiq
 
 
-## Docker
+# Docker
 
 To build app using docker use command `docker-compose build`
 After build you will be able to launch app using command `docker-compose up`
 Remember to run `bundle exec` and migrations
 
-## Endpoints
+# Endpoints
 
-### POST api/v1/trips
-Example request
+## POST api/v1/trips
+### Example request
 ```
 {
 	"start_address": "Plac Europejski 2, Warszawa, Polska",
@@ -30,7 +30,7 @@ Example request
 }
 ```
 
-Response
+### Response
 
 If params were valid, it should return trip object with `200 Created` code
 When errors occurs during creating object it should return json with `errors` key and status code `422 Unprocessable Entity`
@@ -54,8 +54,8 @@ When errors occurs during creating object it should return json with `errors` ke
 }
 ```
 
-### GET api/v1/stats/weekly
-Response
+## GET api/v1/stats/weekly
+### Response
 ```
 {
     "total_distance": "363560.0 km",
@@ -63,8 +63,8 @@ Response
 }
 ```
 
-### GET api/v1/stats/monthly
-Response
+## GET api/v1/stats/monthly
+### Response
 ```
 [
     {
