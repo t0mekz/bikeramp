@@ -6,7 +6,7 @@ class GoogleDistanceCalculatorClient
   DISTANCE_PATCH = "/maps/api/distancematrix/"
 
   base_uri 'https://maps.googleapis.com'
-  
+
   def initialize
     @options = { query: { key: Rails.application.credentials.dig(:google_apis, :maps) } }
   end
