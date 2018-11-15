@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_195834) do
+ActiveRecord::Schema.define(version: 2018_11_15_192041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,5 +24,16 @@ ActiveRecord::Schema.define(version: 2018_11_14_195834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+
+  create_view "daily_statistics",  sql_definition: <<-SQL
+      SELECT trips.date,
+      sum(trips.distance) AS total_distance,
+      avg(trips.distance) AS avg_ride,
+      avg(trips.price) AS avg_price
+     FROM trips
+    WHERE (trips.distance IS NOT NULL)
+    GROUP BY trips.date;
+  SQL
 
 end

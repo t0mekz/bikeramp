@@ -32,7 +32,7 @@ gem 'sidekiq'
 
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rubocop', require: false
-
+gem 'scenic'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,7 +41,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 4.0"
 end
 
-group :test do  
+group :test do
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'rails-controller-testing'
 end
