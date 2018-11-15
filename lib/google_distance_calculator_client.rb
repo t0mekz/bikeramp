@@ -29,4 +29,11 @@ class GoogleDistanceCalculatorClient
       raise GoogleDistanceCalculatorError.new(response.parsed_response["status"])
     end
   end
+
+  class GoogleDistanceCalculatorError < StandardError
+    def initialize(status)
+      message = "#{status} - Something went wrong. We cannot calculate distance for provided addresses."
+      super
+    end
+  end
 end
